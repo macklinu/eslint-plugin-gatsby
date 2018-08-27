@@ -12,6 +12,7 @@
   - [`no-invalid-node-api`](#no-invalid-node-api)
   - [`no-invalid-browser-api`](#no-invalid-browser-api)
   - [`no-invalid-ssr-api`](#no-invalid-ssr-api)
+  - [`no-invalid-gatsby-config`](#no-invalid-gatsby-config)
 - [Contributing](#contributing)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -91,6 +92,33 @@ exports.onRenderBody = () => {
 
 exports.someUnknownFunction = () => {
   // ...
+}
+```
+
+### `no-invalid-gatsby-config`
+
+Warns when the `gatsby-config.js` contains unknown configuration options.
+
+:white_check_mark: Example of passing code:
+
+```js
+// gatsby-config.js
+
+module.exports = {
+  siteMetadata: {},
+  plugins: [],
+  proxy: {},
+  // ...
+}
+```
+
+:x: Example of code that produces violations:
+
+```js
+// gatsby-config.js
+
+module.exports = {
+  unknownOption: {},
 }
 ```
 
