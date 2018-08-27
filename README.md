@@ -11,6 +11,7 @@
 - [Rules](#rules)
   - [`no-invalid-node-api`](#no-invalid-node-api)
   - [`no-invalid-browser-api`](#no-invalid-browser-api)
+  - [`no-invalid-ssr-api`](#no-invalid-ssr-api)
 - [Contributing](#contributing)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -63,6 +64,30 @@ exports.onClientEntry = () => {
 
 ```js
 // gatsby-browser.js
+
+exports.someUnknownFunction = () => {
+  // ...
+}
+```
+
+### `no-invalid-ssr-api`
+
+Warns when the `gatsby-ssr.js` file exports an unknown SSR API function.
+
+:white_check_mark: Example of passing code:
+
+```js
+// gatsby-ssr.js
+
+exports.onRenderBody = () => {
+  // ...
+}
+```
+
+:x: Example of code that produces violations:
+
+```js
+// gatsby-ssr.js
 
 exports.someUnknownFunction = () => {
   // ...
